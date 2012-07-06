@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/malakar/code/hack/google_appengine/imdbflixr'
+let g:netrw_dirhist_2='/Users/malakar/code/oss/pyflix-read-only'
+let g:netrw_dirhist_3='/Users/malakar/code/oss/requests/requests'
+let g:netrw_dirhist_4='/Users/malakar/code/oss/pyflix2/docs/_templates'
+let g:netrw_dirhist_5='/Users/malakar/code/oss/timemarker'
+let g:netrw_dirhist_6='/Users/malakar/code/oss/timemarker/browser-timetracker-read-only'
