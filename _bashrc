@@ -1,28 +1,22 @@
-########################## malakar section ###############################
 
 export ANT_HOME=$HOME/bin/apache-ant-1.8.4
 export FORREST_HOME=$HOME/bin/apache-forrest-0.9
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home/
-export PATH=$HOME/bin:$HOME/bin/android-sdk-mac_86:$HOME/installed/maven-2.0.9/bin:$HOME/installed/apache-tomcat-6.0.14/bin:$JAVA_HOME/bin/:/opt/local/bin:/opt/local/sbin:$HOME/bin/hadoop-0.20.205.0/bin:/usr/local/mysql/bin/:$PATH
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-export PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+export HADOOP_HOME=$HOME/bin/hadoop-0.20.205.0
+export M2_HOME=$HOME/bin/apache-maven-3.0.4
+export PYTHON_HOME=/Library/Frameworks/Python.framework/Versions/2.7
+export PATH=$HOME/bin:$HOME/bin/android-sdk-mac_86:$JAVA_HOME/bin/:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin/:$M2_HOME/bin:$PYTHON_HOME/bin:$PATH
 export PATH=$ANT_HOME/bin:$FORREST_HOME/bin:$PATH
 
 export MANPATH=/opt/local/share/man:$MANPATH
 
-export M2_HOME=$HOME/bin/apache-maven-3.0.4
-
-alias eclipse="/Users/malakar/installed/eclipse/eclipse -vm /System/Library/Frameworks/JavaVM.framework/Versions/1.5.0 -vmargs -Xms256m -Xmx512m -XX:MaxPermSize=128m"
 alias desktop="ssh freshmember.corp.yahoo.com" 
 alias mate="open -a TextMate"
 export XMLLINT_INDENT="    "
 
-# hostname tab completion for ssh
+# hostname tab completion for ssh/ping
 complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -v "\["`;)" ssh
 complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -v "\["`;)" ping
-# CVS
-export CVSROOT=vault.yahoo.com:/CVSROOT
-export CVS_RSH=ssh
 
 svnhttp() {
     php -r "echo(realpath('$1'));" | sed -e 's/\/Users\/malakar\/code/http:\/\/svn.corp.yahoo.com\/view/g'
@@ -34,9 +28,7 @@ bind 'set match-hidden-files off'
 #FileMerge as diff viewer
 alias svndiff='svn diff --diff-cmd svnopendiffshim.py'
 ##########################################################################
-alias grep="egrep --exclude=\*.svn\* -r -i --color"
-
-
+alias grep='egrep --exclude=\*.svn\* -r -i --color'
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -97,26 +89,15 @@ esac
 
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
-#    eval "`dircolors -b`"
     alias ls='ls -G'
-    #alias dir='ls --color=auto --format=vertical'
-    #alias vdir='ls --color=auto --format=long'
 fi
 
 # some more ls aliases
 alias ll='ls -l'
 alias la='ls -A'
-#alias l='ls -CF'
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-#if [ -f /etc/bash_completion ]; then
-#    . /etc/bash_completion
-#fi
 
 ###########################################################
-export SVNROOT=svn+ssh://svn.corp.yahoo.com/ 
+export SVNROOT=svn+ssh://svn.corp.yahoo.com/
 export SVN_EDITOR="vim --noplugin"
 # yssh and yscp
 if [ -x $HOME/bin/yssh ]; then
@@ -127,18 +108,13 @@ fi
 export SVN_SSH=$HOME/bin/yssh
 
 
-# Harley + Erlang
 alias mysql_start='sudo /opt/local/bin/mysqld_safe5 &'
 alias mysql_stop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
 
-complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -v "\["`;)" ssh
 alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
 
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
-##
-# Your previous /Users/malakar/.bash_profile file was backed up as /Users/malakar/.bash_profile.macports-saved_2012-05-05_at_12:28:47
-##
 
 alias vim="mvim -v"
