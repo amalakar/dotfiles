@@ -1,4 +1,8 @@
 
+os=`uname -s`
+host=`hostname | cut -d. -f1`
+
+
 export ANT_HOME=$HOME/bin/apache-ant-1.8.4
 export FORREST_HOME=$HOME/bin/apache-forrest-0.9
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home/
@@ -19,7 +23,18 @@ complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g 
 complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -v "\["`;)" ping
 
 svnhttp() {
-    php -r "echo(realpath('$1'));" | sed -e 's/\/Users\/malakar\/code/http:\/\/svn.corp.yahoo.com\/view/g'
+    if [ "$#" -eq 1 ]
+    then
+        path=$1
+    else
+        path=`pwd`
+    fi
+    url=`svn info $path | grep URL | sed -e 's/URL: svn+ssh/http/g'  | sed -e 's/svn.corp.yahoo.com/svn.corp.yahoo.com\/view/g'`
+    if [ -f "$path" ]
+    then
+        url="${url}?view=markup"
+    fi
+    echo "$url"
 }
 
 # Don't show . files in bash completion
@@ -27,16 +42,13 @@ bind 'set match-hidden-files off'
 
 #FileMerge as diff viewer
 alias svndiff='svn diff --diff-cmd svnopendiffshim.py'
-##########################################################################
-alias grep='egrep --exclude=\*.svn\* -r -i --color'
+export GREP_OPTIONS="--exclude=\*.svn\* --color"
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
 # don't put duplicate lines in the history. See bash(1) for more options
 export HISTCONTROL=ignoredups
-# ... and ignore same sucessive entries.
-export HISTCONTROL=ignoreboth
 export HISTFILE=$HOME/.bash_history
 
 # check the window size after each command and, if necessary,
@@ -78,23 +90,13 @@ xterm*|rxvt*)
     ;;
 esac
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-#if [ -f ~/.bash_aliases ]; then
-#    . ~/.bash_aliases
-#fi
-
 # enable color support of ls and also add handy aliases
-if [ "$TERM" != "dumb" ]; then
-    alias ls='ls -G'
-fi
-
-# some more ls aliases
-alias ll='ls -l'
-alias la='ls -A'
+case $os in
+    "Darwin" )
+        alias ls='ls -G';;
+    "Linux"  )
+        alias ls='ls --color=auto';;
+esac
 
 ###########################################################
 export SVNROOT=svn+ssh://svn.corp.yahoo.com/
