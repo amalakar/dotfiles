@@ -25,7 +25,11 @@ case $os in
     "Darwin" )
         alias ls='ls -G';;
     "Linux"  )
-        alias ls='ls --color=auto';;
+        alias ls='ls --color=auto'
+        if [ -d '/home/y/bin/' ]
+        then
+            export PATH=/home/y/bin64:/home/y/bin:$PATH
+        fi
 esac
 
 export PATH=$HOME/bin:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin/:$PATH

@@ -31,3 +31,7 @@ From this top-level directory.
 
 ## Requirements
 * bash
+
+## Misc
+
+    curl -Lk https://github.com/amalakar/dotfiles/tarball/master | tar xz; mv amalakar-dotfiles* dotfiles
