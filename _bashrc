@@ -2,20 +2,37 @@
 os=`uname -s`
 host=`hostname | cut -d. -f1`
 
+# Host specific settings
+if [ $host == 'wifeforget-lm' ]; then
+    export ANT_HOME=$HOME/bin/apache-ant-1.8.4
+    export FORREST_HOME=$HOME/bin/apache-forrest-0.9
+    export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home/
+    export HADOOP_HOME=$HOME/bin/hadoop-0.20.205.0
+    export M2_HOME=$HOME/bin/apache-maven-3.0.4
+    export PYTHON_HOME=/Library/Frameworks/Python.framework/Versions/2.7
 
-export ANT_HOME=$HOME/bin/apache-ant-1.8.4
-export FORREST_HOME=$HOME/bin/apache-forrest-0.9
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home/
-export HADOOP_HOME=$HOME/bin/hadoop-0.20.205.0
-export M2_HOME=$HOME/bin/apache-maven-3.0.4
-export PYTHON_HOME=/Library/Frameworks/Python.framework/Versions/2.7
-export PATH=$HOME/bin:$HOME/bin/android-sdk-mac_86:$JAVA_HOME/bin/:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin/:$M2_HOME/bin:$PYTHON_HOME/bin:$PATH
-export PATH=$ANT_HOME/bin:$FORREST_HOME/bin:$PATH
+    export PATH=$ANT_HOME/bin:$FORREST_HOME/bin:$JAVA_HOME/bin:$HADOOP_HOME/bin:$M2_HOME/bin:$PYTHON_HOME/bin:$PATH:$HOME/bin/android-sdk-mac_86
+
+    alias vim="mvim -v"
+    alias mysql_start='sudo /opt/local/bin/mysqld_safe5 &'
+    alias mysql_stop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
+    alias mate="open -a TextMate"
+fi
+
+# OS specific settings
+# enable color support of ls and also add handy aliases
+case $os in
+    "Darwin" )
+        alias ls='ls -G';;
+    "Linux"  )
+        alias ls='ls --color=auto';;
+esac
+
+export PATH=$HOME/bin:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin/:$PATH
 
 export MANPATH=/opt/local/share/man:$MANPATH
 
 alias desktop="ssh freshmember.corp.yahoo.com" 
-alias mate="open -a TextMate"
 export XMLLINT_INDENT="    "
 
 # hostname tab completion for ssh/ping
@@ -41,7 +58,6 @@ svnhttp() {
 bind 'set match-hidden-files off'
 
 #FileMerge as diff viewer
-alias svndiff='svn diff --diff-cmd svnopendiffshim.py'
 export GREP_OPTIONS="--exclude=\*.svn\* --color"
 
 # If not running interactively, don't do anything
@@ -78,9 +94,6 @@ PS1='\e[0;34m\w\e[m\$ '
 # more: http://jonisalonen.com/2012/your-bash-prompt-needs-this/
 PS1="\[\033[G\]$PS1"
 
-
-# Comment in the above and uncomment this below for a color prompt
-
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
@@ -90,28 +103,18 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
-case $os in
-    "Darwin" )
-        alias ls='ls -G';;
-    "Linux"  )
-        alias ls='ls --color=auto';;
-esac
+
 
 ###########################################################
 export SVNROOT=svn+ssh://svn.corp.yahoo.com/
 export SVN_EDITOR="vim --noplugin"
 # yssh and yscp
 if [ -x $HOME/bin/yssh ]; then
-  alias ssh='yssh'
-  alias scp='yscp'
+    alias ssh='yssh'
+    alias scp='yscp'
+    export SVN_SSH=$HOME/bin/yssh
 fi
 
-export SVN_SSH=$HOME/bin/yssh
-
-
-alias mysql_start='sudo /opt/local/bin/mysqld_safe5 &'
-alias mysql_stop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
 
 alias rm="rm -i"
 alias cp="cp -i"
@@ -119,4 +122,3 @@ alias mv="mv -i"
 
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
 
-alias vim="mvim -v"
