@@ -246,6 +246,7 @@ if has("gui_running")
 else
     "colorscheme torte
     colorscheme ir_black 
+    "colorscheme molokai 
 endif
 
 " Paste from clipboard
