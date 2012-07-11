@@ -246,6 +246,7 @@ if has("gui_running")
 else
     "colorscheme torte
     colorscheme ir_black 
+    "colorscheme molokai 
 endif
 
 " Paste from clipboard
@@ -311,3 +312,11 @@ endif
 if v:version >= 730
     set colorcolumn=79
 endif
+
+
+" File name to syntax mapping
+autocmd! BufRead,BufNewFile *.yicf setfiletype yinst
+autocmd! BufRead,BufNewFile *.as setfiletype actionscript
+autocmd! BufRead,BufNewFile *.inc setfiletype php
+autocmd! BufRead,BufNewFile *.erl,*.hrl setfiletype erlang
+autocmd! BufNewFile,BufRead *.pig setfiletype pig
