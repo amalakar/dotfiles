@@ -21,10 +21,13 @@ case $host in
         alias mate="open -a TextMate"
         ;;
     'gsbl90240' )
+        export JAVA_HOME=/home/y/libexec64/jdk1.6.0/
         export HADOOP_HOME=/home/gs/hadoop/current
-        export HADOOP_CONF_DIR=$HADOOP_HOME/conf
+        export HADOOP_CONF_DIR=/home/gs/conf/current/
+        export HCAT_URI=thrift://gsbl90249.blue.ygrid.yahoo.com:9080
+        export HCAT_PRINCIPAL=hcat/_HOST@YGRID.YAHOO.COM
 
-        export PATH=$HADOOP_HOME/bin:$PATH
+        export PATH=$HADOOP_HOME/bin:$JAVA_HOME/bin:$PATH
         ;;
 esac
 

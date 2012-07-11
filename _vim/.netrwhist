@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/Users/malakar/code/hack/google_appengine/imdbflixr'
 let g:netrw_dirhist_2='/Users/malakar/code/oss/pyflix-read-only'
 let g:netrw_dirhist_3='/Users/malakar/code/oss/requests/requests'
@@ -7,3 +7,4 @@ let g:netrw_dirhist_4='/Users/malakar/code/oss/pyflix2/docs/_templates'
 let g:netrw_dirhist_5='/Users/malakar/code/oss/timemarker'
 let g:netrw_dirhist_6='/Users/malakar/code/oss/timemarker/browser-timetracker-read-only'
 let g:netrw_dirhist_7='/Users/malakar/code/oss/reddit_api/reddit'
+let g:netrw_dirhist_8='/home/gs/gridre/yroot.jungle/share/hadoop-1.0.2.1206210100'
