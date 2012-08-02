@@ -9,6 +9,7 @@ case $host in
         export FORREST_HOME=$HOME/bin/apache-forrest-0.9
         export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home/
         export HADOOP_HOME=$HOME/bin/hadoop-0.20.205.0
+        export PIG_HOME=$HOME/bin/pig-0.9.2
         export M2_HOME=$HOME/bin/apache-maven-3.0.4
         export PYTHON_HOME=/Library/Frameworks/Python.framework/Versions/2.7
         export ANDROID_HOME=$HOME/bin/android-sdk-mac_86
@@ -107,10 +108,10 @@ fi
 #    ;;
 #esac
 
-PS1='\e[0;34m\w\e[m\$ '
+PS1='\w $ '
 
 # more: http://jonisalonen.com/2012/your-bash-prompt-needs-this/
-PS1="\[\033[G\]$PS1"
+#PS1="\[\033[G\]$PS1"
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
