@@ -13,8 +13,8 @@ case $host in
         export M2_HOME=$HOME/bin/apache-maven-3.0.4
         export PYTHON_HOME=/Library/Frameworks/Python.framework/Versions/2.7
         export ANDROID_HOME=$HOME/bin/android-sdk-mac_86
-
-        export PATH=$ANT_HOME/bin:$FORREST_HOME/bin:$JAVA_HOME/bin:$HADOOP_HOME/bin:$M2_HOME/bin:$PYTHON_HOME/bin:$PATH:$ANDROID_HOME
+        export ARCANIST_HOME=$HOME/bin/arcanist
+        export PATH=$ANT_HOME/bin:$FORREST_HOME/bin:$JAVA_HOME/bin:$HADOOP_HOME/bin:$M2_HOME/bin:$PYTHON_HOME/bin:$PATH:$ANDROID_HOME:$ARCANIST_HOME/bin
 
         alias vim="mvim -v"
         alias mysql_start='sudo /opt/local/bin/mysqld_safe5 &'
@@ -29,6 +29,10 @@ case $host in
         export HCAT_PRINCIPAL=hcat/_HOST@YGRID.YAHOO.COM
 
         export PATH=$HADOOP_HOME/bin:$JAVA_HOME/bin:$PATH
+        
+        export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/y/lib/ora11gclient/
+        export TNS_ADMIN=/homeome/y/lib/ora11gclient/
+        export PATH=/home/y/lib/ora11gclient/ora11gclient:$PATH
         ;;
 esac
 
@@ -79,6 +83,8 @@ bind 'set match-hidden-files off'
 #FileMerge as diff viewer
 export GREP_OPTIONS="--exclude=\*.svn\* --color"
 
+
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -108,7 +114,11 @@ fi
 #    ;;
 #esac
 
-PS1='\w $ '
+parse_git_branch ()
+{
+      git branch 2> /dev/null | grep '*' | sed 's#*\ \(.*\)#(git::\1)#'
+}
+PS1="\w \$(parse_git_branch)\$ "
 
 # more: http://jonisalonen.com/2012/your-bash-prompt-needs-this/
 #PS1="\[\033[G\]$PS1"
@@ -141,3 +151,5 @@ alias mv="mv -i"
 
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

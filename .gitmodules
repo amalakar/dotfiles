@@ -64,3 +64,6 @@
 [submodule "_vim/bundle/abolish"]
 	path = _vim/bundle/abolish
 	url = git://github.com/tpope/vim-abolish.git
+[submodule "iTerm2-Color-Schemes"]
+	path = iTerm2-Color-Schemes
+	url = git@github.com:mbadolato/iTerm2-Color-Schemes.git
