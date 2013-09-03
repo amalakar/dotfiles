@@ -67,3 +67,9 @@
 [submodule "iTerm2-Color-Schemes"]
 	path = iTerm2-Color-Schemes
 	url = git@github.com:mbadolato/iTerm2-Color-Schemes.git
+[submodule "_vim/vim-scala"]
+	path = _vim/vim-scala
+	url = git@github.com:derekwyatt/vim-scala.git
+[submodule "_vim/bundle/vim-scala"]
+	path = _vim/bundle/vim-scala
+	url = git@github.com:derekwyatt/vim-scala.git
