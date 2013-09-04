@@ -73,3 +73,6 @@
 [submodule "_vim/bundle/vim-scala"]
 	path = _vim/bundle/vim-scala
 	url = git@github.com:derekwyatt/vim-scala.git
+[submodule "_vim/bundle/vim-coffee-script"]
+	path = _vim/bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git

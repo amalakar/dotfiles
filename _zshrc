@@ -41,11 +41,29 @@ ZSH_THEME="blinks"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git scalai sbt brew colorize colored-man history go jira ssh-agent)
+plugins=(git scalai sbt brew colorize colored-man history go ssh-agent bundler ruby)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/Users/arup/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin/:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/go/bin:/Users/arup/.rvm/bin:$PATH
+export PATH=$HOME/.rbenv/bin:/Users/arup/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin/:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/go/bin:/Users/arup/.rvm/bin:$PATH
 
 export SBT_OPTS=" -Xmx1024M -XX:MaxPermSize=512m"
+
+export PATH="/Users/arup/.rbenv/shims:${PATH}"
+source "/Users/arup/.rbenv/libexec/../completions/rbenv.zsh"
+rbenv rehash 2>/dev/null
+rbenv() {
+  typeset command
+  command="$1"
+  if [ "$#" -gt 0 ]; then
+    shift
+  fi
+
+  case "$command" in
+  rehash|shell)
+    eval "`rbenv "sh-$command" "$@"`";;
+  *)
+    command rbenv "$command" "$@";;
+  esac
+}
