@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/Users/malakar/dotfiles'
 let g:netrw_dirhist_2='/Users/malakar/code/yahoo/tools/reviewboard/trunk/lib/yreview/changelog'
 let g:netrw_dirhist_3='/Users/malakar/.oh-my-zsh'
@@ -8,3 +8,4 @@ let g:netrw_dirhist_5='/Users/malakar/tmp'
 let g:netrw_dirhist_6='/Users/malakar/tmp/transitive_mvn/child'
 let g:netrw_dirhist_7='/Users/malakar/.m2/repository/com/example/superparent'
 let g:netrw_dirhist_8='/Users/malakar/code/oss/hcatalog/git/branch-0.5/hcatSupport-0.5/release_definition/common'
+let g:netrw_dirhist_9='/Users/arup/repos/hooker/nginx'

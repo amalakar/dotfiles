@@ -130,6 +130,7 @@ map <leader>r :RopeRename<CR>
 " Pathogen - Allows us to organize our vim plugins
 " ==========================================================
 " Load pathogen with docs for all plugins
+let g:pathogen_disabled = ["snipmate"]
 filetype off
 call pathogen#runtime_append_all_bundles()
 "call pathogen#helptags()
@@ -147,6 +148,7 @@ set title                     " show title in console title bar
 set wildmenu                  " Menu completion in command mode on <Tab>
 set wildmode=full             " <Tab> cycles between all matching choices.
 
+let g:miniBufExplMapCTabSwitchBufs = 1
 " don't bell or blink
 set noerrorbells
 set vb t_vb=
