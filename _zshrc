@@ -46,7 +46,6 @@ plugins=(git scala sbt brew colorize colored-man history go ssh-agent bundler ru
 source $ZSH/oh-my-zsh.sh
 source $HOME/.amazonrc
 # Customize to your needs...
-
 export SBT_OPTS=" -Xmx1024M -XX:MaxPermSize=512m"
 export GOPATH="$HOME/code/hack/gocode"
 

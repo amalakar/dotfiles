@@ -322,3 +322,4 @@ autocmd! BufRead,BufNewFile *.as setfiletype actionscript
 autocmd! BufRead,BufNewFile *.inc setfiletype php
 autocmd! BufRead,BufNewFile *.erl,*.hrl setfiletype erlang
 autocmd! BufNewFile,BufRead *.pig setfiletype pig
+autocmd! BufRead,BufNewFile Vagrantfile setfiletype ruby
