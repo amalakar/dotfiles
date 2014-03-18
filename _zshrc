@@ -41,17 +41,24 @@ ZSH_THEME="blinks"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git scala sbt brew colorize colored-man history go ssh-agent bundler ruby mvn optimus)
+plugins=(git scala sbt brew colorize colored-man history go ssh-agent bundler ruby mvn optimus vagrant)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.amazonrc
 # Customize to your needs...
 export SBT_OPTS=" -Xmx1024M -XX:MaxPermSize=512m"
 export GOPATH="$HOME/code/hack/gocode"
-
+#export JAVA_HOME=`/usr/libexec/java_home -v 1.6`
+#export HADOOP_HOME=$HOME/repos/vendor/hadoop_distros/current
+export HADOOP_HOME=$HOME/repos/vendor/hadoop_distros/current-cdh5
+#export HADOOP_CONF_DIR=$HOME/repos/vendor/hadoop_distros/current/conf-analytics-mr.sv2
+export HADOOP_CONF_DIR=$HOME/repos/vendor/hadoop_distros/current/conf-cdh5-staging
 export PATH=$HOME/.rbenv/bin:$HOME/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/go/bin:$HOME/.rvm/bin:$PATH
 export PATH="$HOME/.rbenv/shims:${PATH}"
 export PATH="$GOPATH/bin:$PATH"
+# export PATH=$HOME/repos/vendor/sbt:$PATH
+export PATH=$HADOOP_HOME/bin:$PATH
+#export PATH="$JAVA_HOME/bin:$PATH"
 rbenv rehash 2>/dev/null
 rbenv() {
   typeset command
@@ -70,3 +77,10 @@ rbenv() {
 
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages
 export OOYALA_REPO_ROOT=$HOME/repos/
+alias chrome "open -a 'Google Chrome'"
+export kafka_c1b="kafka-c1n1.us-east-1.ooyala.com:9092,kafka-c1n2.us-east-1.ooyala.com:9092,kafka-c1n3.us-east-1.ooyala.com:9092,kafka-c1n4.us-east-1.ooyala.com:9092"
+export kafka_c1z="zoo-c1n1.us-east-1.ooyala.com:2181,zoo-c1n2.us-east-1.ooyala.com:2181,zoo-c1n3.us-east-1.ooyala.com:2181,zoo-c1n4.us-east-1.ooyala.com:2181,zoo-c1n5.us-east-1.ooyala.com:2181,zoo-c1n6.us-east-1.ooyala.com:2181,zoo-c1n7.us-east-1.ooyala.com:2181"
+export kafka_c2b="kafka-c2n1.us-east-1.ooyala.com:9092,kafka-c2n2.us-east-1.ooyala.com:9092,kafka-c2n3.us-east-1.ooyala.com:9092,kafka-c2n4.us-east-1.ooyala.com:9092"
+export kafka_c2z="zoo-c2n1.us-east-1.ooyala.com:2181,zoo-c2n2.us-east-1.ooyala.com:2181,zoo-c2n3.us-east-1.ooyala.com:2181,zoo-c2n4.us-east-1.ooyala.com:2181,zoo-c2n5.us-east-1.ooyala.com:2181"
+export kafka_c3b="kafka-c3n1.us-east-1.ooyala.com:9092,kafka-c3n2.us-east-1.ooyala.com:9092,kafka-c3n3.us-east-1.ooyala.com:9092,kafka-c3n4.us-east-1.ooyala.com:9092"
+export kafka_c3z="zoo-c3n1.us-east-1.ooyala.com:2181,zoo-c3n2.us-east-1.ooyala.com:2181,zoo-c3n3.us-east-1.ooyala.com:2181,zoo-c3n4.us-east-1.ooyala.com:2181,zoo-c3n5.us-east-1.ooyala.com:2181"

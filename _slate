@@ -27,6 +27,13 @@ alias rightmost     move screenOriginX+screenSizeX*0.4;screenOriginY  screenSize
 alias rightless     move screenOriginX+screenSizeX*0.6;screenOriginY  screenSizeX*0.4;screenSizeY
 alias leftmost      move screenOriginX;screenOriginY                  screenSizeX*0.6;screenSizeY
 alias leftless      move screenOriginX;screenOriginY                  screenSizeX*0.4;screenSizeY
+
+alias lefttop       move screenOriginX;screenOriginY                   screenSizeX/2;screenSizeY/2
+alias leftbottom    move screenOriginX;screenSizeY/2                   screenSizeX/2;screenSizeY/2
+alias righttop      move screenSizeX/2;screenOriginY                   screenSizeX/2;screenSizeY/2
+alias rightbottom   move screenSizeX/2;screenSizeY/2                   screenSizeX/2;screenSizeY/2
+#alias lefttop       move screenOriginX;screenOriginY                   screenSizeX/2;screenSizeY/2
+#
 # Concrete positions
 alias 1-full        move screenOriginX;screenOriginY screenSizeX;screenSizeY         ${mon-left}
 alias 1-left        move screenOriginX;screenOriginY screenSizeX/2;screenSizeY         ${mon-left}
@@ -94,6 +101,10 @@ bind l:${hyper} ${lefthalf}
 bind f:${hyper} ${full}
 bind r:${hyper} ${righthalf}
 bind t:${hyper} throw next
+bind 1:${hyper} ${lefttop}
+bind 2:${hyper} ${righttop}
+bind 3:${hyper} ${leftbottom}
+bind 4:${hyper} ${rightbottom}
  
 # Resize Bindings
 #bind r:${hyper} ${leftmost}
